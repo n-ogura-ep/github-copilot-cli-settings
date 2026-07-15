@@ -517,6 +517,185 @@ Use these names in the `tools` list:
 | Using `.md` instead of `.agent.md`         | File may not be recognized as an agent    | Name files like `python-reviewer.agent.md`                              |
 | Overly long agent prompts                  | May hit the 30,000 character limit        | Keep agent definitions focused; use skills for detailed instructions    |
 
+## skills (Chapter 05)
+
+### Understanding Skills
+
+Agent Skills are folders containing instructions, scripts, and resources that Copilot **automatically loads when relevant** to your task. Copilot reads your prompt, checks if any skills match, and applies the relevant instructions automatically.
+
+```bash
+copilot
+
+> Check books.py against our quality checklist
+# Copilot detects this matches your "code-checklist" skill
+# and automatically applies its Python quality checklist
+
+> Generate tests for the BookCollection class
+# Copilot loads your "pytest-gen" skill
+# and applies your preferred test structure
+
+> What are the code quality issues in this file?
+# Copilot loads your "code-checklist" skill
+# and checks against your team's standards
+```
+
+> 💡 **Key Insight**: Skills are **automatically triggered** based on your prompt matching the skill's description. Just ask naturally and Copilot applies relevant skills behind the scenes. You can also invoke skills directly as well which you'll learn about next.
+
+### Direct Slash Command Invocation
+
+While auto-triggering is the primary way skills work, you can also **invoke skills directly** using their name as a slash command:
+
+```bash
+> /generate-tests Create tests for the user authentication module
+
+> /code-checklist Check books.py for code quality issues
+
+> /security-audit Check the API endpoints for vulnerabilities
+```
+
+This gives you explicit control when you want to ensure a specific skill is used.
+
+### Combining Multiple Skills in One Message
+
+You can invoke **more than one skill in a single message**, and the skill slash command can appear anywhere in your prompt — not just at the beginning. This is handy when you want two different checks done in one go:
+
+```bash
+> Check @samples/book-app-project/book_app.py with /code-checklist and also run /generate-tests for it
+
+> Review the auth module /security-audit then /code-checklist the result
+```
+
+Copilot will apply each named skill in the same response, saving you from sending multiple separate messages.
+
+> 💡 **Tip**: Put the skill slash commands wherever they feel most natural in your sentence. You can put them at the start, middle, or end of your message.
+
+> 📝 **Skills vs Agents Invocation**: Don't confuse skill invocation with agent invocation:
+>
+> - **Skills**: `/skill-name <prompt>`, e.g., `/code-checklist Check this file`
+> - **Agents**: `/agent` (select from list) or `copilot --agent <name>` (command line)
+>
+> If you have both a skill and an agent with the same name (e.g., "code-reviewer"), typing `/code-reviewer` invokes the **skill**, not the agent.
+
+### Skill Locations
+
+Skills are stored in `.github/skills/` (project-specific) or `~/.copilot/skills/` (user level).
+
+> 他社エージェントツールと参照先を共通化する場合は、`.agents/skills/` に保存する。
+
+#### How Copilot Finds Skills
+
+Copilot automatically scans these locations for skills:
+
+| Location             | Scope                                       |
+| -------------------- | ------------------------------------------- |
+| `.github/skills/`    | Project-specific (shared with team via git) |
+| `~/.copilot/skills/` | User-specific (your personal skills)        |
+
+### Skill Structure
+
+Each skill lives in its own folder with a `SKILL.md` file. You can optionally include scripts, examples, or other resources:
+
+```
+.github/skills/
+└── my-skill/
+    ├── SKILL.md           # Required: Skill definition and instructions
+    ├── examples/          # Optional: Example files Copilot can reference
+    │   └── sample.py
+    └── scripts/           # Optional: Scripts the skill can use
+        └── validate.sh
+```
+
+> 💡 **Tip**: The directory name should match the `name` in your SKILL.md frontmatter (lowercase with hyphens).
+
+### SKILL.md Format
+
+Skills use a simple markdown format with YAML frontmatter:
+
+```markdown
+---
+name: code-checklist
+description: Comprehensive code quality checklist with security, performance, and maintainability checks
+license: MIT
+---
+```
+
+### Writing Good Skill Descriptions
+
+The `description` field in your SKILL.md is crucial! It's how Copilot decides whether to load your skill:
+
+```markdown
+---
+name: security-audit
+description: Use for security reviews, vulnerability scanning,
+  checking for SQL injection, XSS, authentication issues,
+  OWASP Top 10 vulnerabilities, and security best practices
+---
+```
+
+> 💡 **Tip**: Include keywords that match how you naturally ask questions. If you say "security review," include "security review" in the description.
+
+### Combining Skills with Agents
+
+Skills and agents work together. The agent provides expertise, the skill provides specific instructions:
+
+```bash
+# Start with a code-reviewer agent
+copilot --agent code-reviewer
+
+> Check the book app for quality issues
+# code-reviewer agent's expertise combines
+# with your code-checklist skill's checklist
+```
+
+### Managing Skills with the `copilot skill` Command and `/skills`
+
+Copilot CLI gives you two ways to manage skills. You can do it directly from the terminal before starting Copilot or from inside a Copilot session.
+
+#### Option 1: `copilot skill` (Terminal Command)
+
+The `copilot skill` subcommand lets you manage skills directly from your terminal, without opening an interactive Copilot session. This is handy for scripting, quick checks, or adding skills before you start working.
+
+```bash
+# See all installed skills
+copilot skill list
+
+# Add a skill from a local file, URL, or directory
+copilot skill add .github/skills/my-skill/SKILL.md
+copilot skill add https://example.com/skills/security-audit/SKILL.md
+
+# Remove a skill by name
+copilot skill remove security-audit
+```
+
+#### Option 2: `/skills` (Inside Copilot Session)
+
+Once you're in an interactive Copilot session, use `/skills` (or its shortcut `/skill`) to manage skills without leaving:
+
+| Command                 | What It Does                                      |
+| ----------------------- | ------------------------------------------------- |
+| `/skills list`          | Show all installed skills                         |
+| `/skills info <name>`   | Get details about a specific skill                |
+| `/skills add <name>`    | Enable a skill (from a repository or marketplace) |
+| `/skills remove <name>` | Disable or uninstall a skill                      |
+| `/skills reload`        | Reload skills after editing SKILL.md files        |
+
+> 💡 **`/skill` shortcut**: You can type `/skill` instead of `/skills` — they're interchangeable. For example, `/skill list` works the same as `/skills list`.
+
+> 💡 **Remember**: You don't need to "activate" skills for each prompt. Once installed, skills are **automatically triggered** when your prompt matches their description. These commands are for managing which skills are available, not for using them.
+
+### When to Use `/skills reload`
+
+After creating or editing a skill's SKILL.md file, run `/skills reload` to pick up the changes without restarting Copilot:
+
+```bash
+# Edit your skill file
+# Then in Copilot:
+> /skills reload
+Skills reloaded successfully.
+```
+
+> 💡 **Good to know**: Skills remain effective even after using `/compact` to summarize your conversation history. No need to reload after compacting.
+
 ---
 
 # 参考
