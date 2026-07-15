@@ -307,7 +307,7 @@ copilot
 
 > 💡 **When to branch**: Branching is great when you're unsure which approach is better and want to keep both options open.
 
-## `*.agents.md` for custom instructions (Chapter 04)
+## `*.agent.md` for custom instructions (Chapter 04)
 
 - <mark style="background: #FF5582A6;">他社のエージェントツールと異なる、GitHub Copilot の独自機能</mark>
 
