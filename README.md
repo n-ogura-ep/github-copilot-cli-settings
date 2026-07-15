@@ -519,10 +519,7 @@ Use these names in the `tools` list:
 
 ---
 
-# 元ネタ
+# 参考
 
 - [n-ogura-ep/copilot-cli-for-beginners](https://github.com/n-ogura-ep/copilot-cli-for-beginners)
-
-> 参考
-
-- [GitHub Copilot CLIを"タダ"で体系的に学べるコースをやってみた](https://zenn.dev/microsoft/articles/9fb85cdca2fb84)
+  - 参考: [GitHub Copilot CLIを"タダ"で体系的に学べるコースをやってみた](https://zenn.dev/microsoft/articles/9fb85cdca2fb84)
