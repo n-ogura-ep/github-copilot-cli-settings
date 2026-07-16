@@ -4,7 +4,7 @@ Portable dev environment for GitHub Copilot CLI in Enterprise work
 
 # メモ
 
-## Modes and Commands (Chapter 01)
+## Modes and Commands
 
 | Mode         | Dining Analogy              | When to Use                                                                    |
 | ------------ | --------------------------- | ------------------------------------------------------------------------------ |
@@ -17,7 +17,7 @@ Once you're comfortable, try:
 - Programmatic mode (`copilot --allow-all -p "<your prompt>"`) for quick, one-off questions
 - Plan mode (`/plan`) when you need to plan things out in more detail before coding
 
-## Context (Chapter 02)
+## Context
 
 ### Basic `@` Patterns
 
@@ -29,7 +29,7 @@ Once you're comfortable, try:
 
 > 💡 Permission flags (`--add-dir`, `--allow-all`) control multi-directory access.
 
-## Session Management (Chapter 02)
+## Session Management
 
 ### Resume the Most Recent Session
 
@@ -305,7 +305,7 @@ copilot
 
 > 💡 **When to branch**: Branching is great when you're unsure which approach is better and want to keep both options open.
 
-## `*.agent.md` for custom instructions (Chapter 04)
+## `*.agent.md` for custom instructions
 
 - <mark style="background: #FF5582A6;">他社のエージェントツールと異なる、GitHub Copilot の独自機能</mark>
 
@@ -515,7 +515,7 @@ Use these names in the `tools` list:
 | Using `.md` instead of `.agent.md`         | File may not be recognized as an agent    | Name files like `python-reviewer.agent.md`                              |
 | Overly long agent prompts                  | May hit the 30,000 character limit        | Keep agent definitions focused; use skills for detailed instructions    |
 
-## skills (Chapter 05)
+## skills
 
 ### Understanding Skills
 
@@ -746,7 +746,7 @@ gh skill install github/awesome-copilot ai-ready --scope user
 
 > ⚠️ **Review before installing**: Always read a skill's `SKILL.md` before installing it. Skills control what Copilot does, and a malicious skill could instruct it to run harmful commands or modify code in unexpected ways.
 
-## MCP (Chapter 06)
+## MCP
 
 ### The `/mcp show` Command
 
