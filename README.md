@@ -696,6 +696,58 @@ Skills reloaded successfully.
 
 > 💡 **Good to know**: Skills remain effective even after using `/compact` to summarize your conversation history. No need to reload after compacting.
 
+### Using Plugins to Install Skills
+
+> 💡 **What are plugins?** Plugins are installable packages that can bundle skills, agents, and MCP server configurations together. Think of them as "app store" extensions for Copilot CLI.
+
+> むやみにサードパーティの Plugin は入れないように留意（脆弱性リスクあり）
+
+The `/plugin` command lets you browse and install these packages:
+
+```bash
+copilot
+
+> /plugin list
+# Shows installed plugins
+
+> /plugin marketplace
+# Browse available plugins
+
+> /plugin install <plugin-name>
+# Install a plugin from the marketplace
+```
+
+To keep your local plugin catalog current, refresh it with:
+
+```bash
+copilot plugin marketplace update
+```
+
+Plugins can bundle multiple capabilities together. A single plugin might include related skills, agents, and MCP server configurations that work together.
+
+### Community Skill Repositories
+
+Pre-made skills are also available from community repositories:
+
+- **[Awesome Copilot](https://github.com/github/awesome-copilot)** - Official GitHub Copilot resources including skills documentation and examples
+
+#### Installing a Community Skill with GitHub CLI
+
+The easiest way to install a skill from a GitHub repository is using the `gh skill install` command (requires [GitHub CLI v2.90.0+](https://github.blog/changelog/2026-04-16-manage-agent-skills-with-github-cli/)):
+
+```bash
+# Browse and interactively select a skill from awesome-copilot
+gh skill install github/awesome-copilot
+
+# Or install a specific skill directly
+gh skill install github/awesome-copilot ai-ready
+
+# Install for personal use across all projects (user scope)
+gh skill install github/awesome-copilot ai-ready --scope user
+```
+
+> ⚠️ **Review before installing**: Always read a skill's `SKILL.md` before installing it. Skills control what Copilot does, and a malicious skill could instruct it to run harmful commands or modify code in unexpected ways.
+
 ---
 
 # 参考
