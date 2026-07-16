@@ -2,8 +2,6 @@
 
 Portable dev environment for GitHub Copilot CLI in Enterprise work
 
-> 以下作成中（Chapter 04 まで完了）
-
 # メモ
 
 ## Modes and Commands (Chapter 01)
@@ -810,6 +808,10 @@ MCP servers can be configured at the user level in `~/.copilot/mcp-config.json`,
 ```
 
 _Most MCP servers are distributed as npm packages and run via the `npx` command._
+
+## Other
+
+- [CI/CD Integration sample](https://github.com/n-ogura-ep/copilot-cli-for-beginners/blob/main/appendices/ci-cd-integration.md)
 
 ---
 
