@@ -748,6 +748,69 @@ gh skill install github/awesome-copilot ai-ready --scope user
 
 > ⚠️ **Review before installing**: Always read a skill's `SKILL.md` before installing it. Skills control what Copilot does, and a malicious skill could instruct it to run harmful commands or modify code in unexpected ways.
 
+## MCP (Chapter 06)
+
+### The `/mcp show` Command
+
+Use `/mcp show` to see which MCP servers are configured and whether they're enabled:
+
+```bash
+copilot
+
+> /mcp show
+
+MCP Servers:
+✓ github (enabled) - GitHub integration
+✓ filesystem (enabled) - File system access
+```
+
+> 📚 **Want to see all MCP management commands?** You can manage servers with `/mcp` slash commands inside chat, or with `copilot mcp` directly from your terminal. See the [full command reference](#-additional-mcp-commands) at the end of this chapter.
+
+### Configuring MCP Servers
+
+<img src="assets/configuring-mcp-servers.png" alt="Hands adjusting knobs and sliders on a professional audio mixing board representing MCP server configuration" width="800"/>
+
+Now that you've seen MCP in action, let's set up additional servers. You can add servers in two ways: **from the built-in registry** (easiest — guided setup right in the CLI) or by **editing the config file** manually (more flexible). Start with the registry option if you're not sure which to choose.
+
+---
+
+### Installing MCP Servers from the Registry
+
+The CLI has a built-in MCP server registry that lets you discover and install popular servers with a guided setup — no JSON editing required.
+
+```bash
+copilot
+
+> /mcp search
+```
+
+Copilot opens an interactive picker showing available servers. Select one, and the CLI walks you through any required configuration (API keys, paths, etc.) and adds it to your config automatically.
+
+> 💡 **Why use the registry?** It's the easiest way to get started — you don't need to know the npm package name, command arguments, or JSON structure. The CLI handles all of that for you.
+
+---
+
+### MCP Configuration File
+
+MCP servers can be configured at the user level in `~/.copilot/mcp-config.json`, which applies across projects, at the project level in `.mcp.json`, or in the workspace config file `.github/mcp.json`. `.github/mcp.json` is auto-loaded alongside `.mcp.json`. If you used `/mcp search`, the CLI created or updated your user-level `~/.copilot/mcp-config.json`, but understanding the JSON format is useful when you want to customize or share project-level MCP configuration.
+
+> ⚠️ **Note**: `.vscode/mcp.json` is no longer supported as an MCP config source. If you have an existing `.vscode/mcp.json`, migrate it to `.mcp.json` in your project root. The CLI will show a migration hint if it detects an old config file.
+
+```json
+{
+  "mcpServers": {
+    "server-name": {
+      "type": "local",
+      "command": "npx",
+      "args": ["@package/server-name"],
+      "tools": ["*"]
+    }
+  }
+}
+```
+
+_Most MCP servers are distributed as npm packages and run via the `npx` command._
+
 ---
 
 # 参考
