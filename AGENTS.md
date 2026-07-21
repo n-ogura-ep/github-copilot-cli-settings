@@ -2,7 +2,7 @@
 
 # Document Management Rules
 
-- After analysis, create or edit any files, review is done by Copilot, always write down or update what Copilot did in @docs/ directory with working date with `YYYY-MM-dd` date format description.
+- After analysis, create or edit any files, review is done by Copilot, always write down or update what Copilot did in @docs/history directory with working date with `YYYY-MM-dd` date format description.
 - When modifying code, configuration, setup steps, CLI behavior, public behavior, environmental variables, dependencies, inputs, outputs, or project structure, inspect @README.md in project repository before completing the task.
 - Update @README.md in project repository when the change makes existing documentation incomplete or inaccurate.
 - if @README.md in project repository does not need changes, explicity mention that it was checked and explain why.
