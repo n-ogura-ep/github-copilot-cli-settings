@@ -1,6 +1,11 @@
 # github-copilot-cli-settings
 
-Portable dev environment for GitHub Copilot CLI in Enterprise work
+> 更新日 : 2026-07-27
+
+- 各プロジェクト毎のリポジトリに配置して用いる事を想定した、GitHub Copilot CLI 用のハーネス関係を集約。（他社エージェント仕様との共通化もある程度考慮）
+- こちらのリポジトリの他に、各個人の GitHub Copilot CLI 設定に入れると有用なものは以下。
+  - [https://github.com/Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) : ソースコード間の繋がりを一元可視化するツール。UML のクラス図・フローチャートに近いものを生成。
+  - [https://github.com/mattpocock/skills](https://github.com/mattpocock/skills) : 有用な SKILL.md カタログ。
 
 # 各ファイル設定の役割
 
@@ -318,7 +323,7 @@ copilot
 
 ## `*.agent.md` for custom instructions
 
-- <mark style="background: #FF5582A6;">他社のエージェントツールと異なる、GitHub Copilot の独自機能</mark>
+- <mark style="background: #FF5582A6;">他社のエージェントツールと異なる、GitHub Copilot の独自機能（OpenAI Codex の profile 設定をより詳細に設定可能にしたような印象）</mark>
 
 ### Add your agents
 
