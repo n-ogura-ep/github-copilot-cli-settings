@@ -6,6 +6,7 @@
 - こちらのリポジトリの他に、各個人の GitHub Copilot CLI 設定に入れると有用なものは以下。
   - [https://github.com/Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) : ソースコード間の繋がりを一元可視化するツール。UML のクラス図・フローチャートに近いものを生成。
   - [https://github.com/mattpocock/skills](https://github.com/mattpocock/skills) : 有用な SKILL.md カタログ。
+  - [https://github.com/nutlope/hallmark](https://github.com/nutlope/hallmark) : いい感じのデザインの制作に有用な SKILL。
 
 # 各ファイル設定の役割
 
