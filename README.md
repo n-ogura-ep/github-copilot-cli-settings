@@ -7,6 +7,7 @@
   - [https://github.com/Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) : ソースコード間の繋がりを一元可視化するツール。UML のクラス図・フローチャートに近いものを生成。
   - [https://github.com/mattpocock/skills](https://github.com/mattpocock/skills) : 有用な SKILL.md カタログ。
   - [https://github.com/nutlope/hallmark](https://github.com/nutlope/hallmark) : いい感じのデザインの制作に有用な SKILL。
+  - [https://github.com/hugohe3/ppt-master](https://github.com/hugohe3/ppt-master) : PowerPoint の叩き台（人手で編集可能）を生成するツール
 
 # 各ファイル設定の役割
 
