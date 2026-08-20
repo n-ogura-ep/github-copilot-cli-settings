@@ -209,7 +209,7 @@ README更新済み。
 
 [golang]
 
-- Go >= 1.26.5
+- Go >= 1.26.7
 - `go mod` command must be used for module managing.
 - `go fmt` command formatter must be applied.
 - Test coverage must be more than 80% by using `go test` command.
