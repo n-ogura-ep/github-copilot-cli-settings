@@ -38,6 +38,13 @@ applyTo: "**/*.go"
 ## Dependencies and Quality
 
 - Prefer the standard library unless an external dependency provides clear value.
-- Keep `go.mod` and `go.sum` tidy with `go mod tidy`.
-- Run `go vet ./...`; follow the repository's configured linter, such as `golangci-lint`, when present.
-- Do not log secrets, credentials, tokens, or sensitive payloads.
+- Keep go.mod and go.sum tidy with go mod tidy.
+- Run go vet ./...; follow the repository's configured linter, such as golangci-lint, when present.
+
+## Security
+
+- Do not hard-code or log secrets, credentials, access tokens, API keys, or sensitive payloads.
+- Validate untrusted input before using it in file paths, commands, URLs, database queries, or deserialization operations.
+- When building binaries for distribution or release, use the `-trimpath` option to avoid embedding local build-system paths in the resulting binary.
+- Do not disable TLS certificate verification or use insecure cryptographic algorithms.
+- Run `govulncheck ./...` before release when the tool is available.
