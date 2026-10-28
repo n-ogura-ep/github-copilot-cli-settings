@@ -201,7 +201,7 @@ README更新済み。
 
 [python]
 
-- Python >= 3.14
+- Python >= 3.14.10
 - uv package manager must be used.
 - ruff formatter must be applied.
 - Test coverage must be more than 80% by using pytest.
@@ -209,7 +209,7 @@ README更新済み。
 
 [golang]
 
-- Go >= 1.26.7
+- Go >= 1.26.10
 - `go mod` command must be used for module managing.
 - `go fmt` command formatter must be applied.
 - Test coverage must be more than 80% by using `go test` command.
