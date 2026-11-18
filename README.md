@@ -1,13 +1,13 @@
 # github-copilot-cli-settings
 
-> 更新日 : 2026-07-27
+> 更新日 : 2026-11-18
 
 - 各プロジェクト毎のリポジトリに配置して用いる事を想定した、GitHub Copilot CLI 用のハーネス関係を集約。（他社エージェント仕様との共通化もある程度考慮）
 - こちらのリポジトリの他に、各個人の GitHub Copilot CLI 設定に入れると有用なものは以下。
-  - [https://github.com/Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) : ソースコード間の繋がりを一元可視化するツール。UML のクラス図・フローチャートに近いものを生成。
-  - [https://github.com/mattpocock/skills](https://github.com/mattpocock/skills) : 有用な SKILL.md カタログ。
-  - [https://github.com/nutlope/hallmark](https://github.com/nutlope/hallmark) : いい感じのデザインの制作に有用な SKILL。
+  - [https://github.com/Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) : ソースコード間の繋がりを一元可視化するツール。UML のクラス図・フローチャートに近いものを生成
+  - [https://github.com/nutlope/hallmark](https://github.com/nutlope/hallmark) : いい感じの Web デザインの制作に有用な SKILL
   - [https://github.com/hugohe3/ppt-master](https://github.com/hugohe3/ppt-master) : PowerPoint の叩き台（人手で編集可能）を生成するツール
+  - [https://github.com/nanaism/yomiyasu](https://github.com/nanaism/yomiyasu) : AI 生成の日本語を自然な感じにする SKILL
 
 # 各ファイル設定の役割
 
